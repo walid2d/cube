@@ -1,14 +1,27 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import React from "react";
+import React, { Fragment } from "react";
 
-function App() {
+import Header from "./Components/Header/Header";
+import CreateStream from "./Components/CreateStream/CreateStream";
+import EditStream from "./Components/EditStream/EditStream";
+import LiveStream from "./Components/LiveStream/LiveStream";
+import StreamDelete from "./Components/StreamDelete/StreamDelete";
+import StreamList from "./Components/StreamList/StreamList";
+
+const App = function () {
   return (
-    <BrowserRouter>
-      <Route path="/" render={}></Route>
-      <Route path="/" render={}></Route>
-    </BrowserRouter>
-
-    
-  )
-}
+    <>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Route path="/" exact render={StreamList}></Route>
+          <Route path="/stream/new" exact render={CreateStream}></Route>
+          <Route path="/stream/edit" exact render={EditStream}></Route>
+          <Route path="/stream/delete" exact render={StreamDelete}></Route>
+          <Route path="/stream/live" exact render={LiveStream}></Route>
+        </div>
+      </BrowserRouter>
+    </>
+  );
+};
 export default App;

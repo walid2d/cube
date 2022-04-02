@@ -1,0 +1,15 @@
+.header {
+  padding: 0 !important;
+  background-color: rgb(35, 5, 96) !important;
+  &-logo-box {
+    padding: 0;
+    margin: 0;
+  }
+  &-logo {
+    width: 4rem;
+    height: 3rem;
+  }
+  &-btn {
+    padding-right: 1rem !important;
+  }
+}
