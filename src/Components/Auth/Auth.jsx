@@ -8,9 +8,8 @@ class Auth extends React.Component {
     console.log(result);
   };
   handlelogin = (userData) => {
-    console.log(this.props);
     console.log(userData.profileObj);
-    this.props.logIn();
+    this.props.logIn(userData.profileObj);
   };
   btnText = () => {
     const text = this.props.isLoggedIn ? "Sign Out" : "Sign in with Google";
