@@ -20,7 +20,7 @@ module.exports = {
 
           warning: "#BD8D14",
 
-          error: "#EE7163",
+          error: "rgb(255,73,124)",
         },
       },
     ],

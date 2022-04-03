@@ -1,19 +1,29 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 class CreateStream extends React.Component {
-  renderInput = ({ input, label, type }) => {
+  renderInput = ({ input, label, type, meta }) => {
+    const errorEle =
+      meta.touched && meta.error ? (
+        <span className="text-sm text-error">{meta.error}</span>
+      ) : null;
     return (
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">{label}</span>
-        </label>
-        <input
-          onChange={input.onChange}
-          value={input.value}
-          placeholder={type}
-          className=" input input-primary input-bordered"
-        />
-      </div>
+      <>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">{label}</span>
+          </label>
+          <input
+            autoComplete="off"
+            onChange={input.onChange}
+            value={input.value}
+            placeholder={type}
+            className={`input ${
+              errorEle ? "input-error" : "input-primary"
+            } input-bordered`}
+          />
+        </div>
+        {errorEle}
+      </>
     );
   };
   onSubmit = (values) => {
@@ -28,15 +38,15 @@ class CreateStream extends React.Component {
             onSubmit={this.props.handleSubmit(this.onSubmit)}
           >
             <Field
-              name="text"
+              name="title"
               label="Title"
-              type="Type Your Title Here"
+              type="Type your title here"
               component={this.renderInput}
             />
             <Field
               name="description"
               label="Description"
-              type="Give Your Video A Description"
+              type="Give your video a description"
               component={this.renderInput}
             />
             <div className="form-control mt-6">
@@ -48,6 +58,17 @@ class CreateStream extends React.Component {
     );
   }
 }
+const validate = (formValues) => {
+  const error = {};
+  if (!formValues.title) {
+    error.title = "Title cannot be empty";
+  }
+  if (!formValues.description) {
+    error.description = "Decription cannot be empty";
+  }
+  return error;
+};
 export default reduxForm({
   form: "CreateStream",
+  validate: validate,
 })(CreateStream);
