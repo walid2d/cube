@@ -1,38 +1,48 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 class CreateStream extends React.Component {
-  renderInput = (label, type) => {
+  renderInput = ({ input, label, type }) => {
     return (
       <div className="form-control">
         <label className="label">
           <span className="label-text">{label}</span>
         </label>
         <input
-          type="text"
+          onChange={input.onChange}
+          value={input.value}
           placeholder={type}
           className=" input input-primary input-bordered"
         />
       </div>
     );
   };
+  onSubmit = (values) => {
+    console.log(values);
+  };
   render() {
-    console.log(this.props);
     return (
       <div className="hero min-h-screen bg-base-200">
         <div className="card w-96 bg-base-100 shadow-xl">
-          <div className="card-body">
+          <form
+            className="card-body"
+            onSubmit={this.props.handleSubmit(this.onSubmit)}
+          >
             <Field
               name="text"
-              component={() => this.renderInput("Tittle", "Tittle")}
+              label="Title"
+              type="Type Your Title Here"
+              component={this.renderInput}
             />
             <Field
               name="description"
-              component={() => this.renderInput("Description", "Description")}
+              label="Description"
+              type="Give Your Video A Description"
+              component={this.renderInput}
             />
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Submit</button>
+              <button className="btn btn-primary">Create</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     );
