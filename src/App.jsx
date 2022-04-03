@@ -15,7 +15,9 @@ const App = function () {
         <div>
           <Header />
           <Route path="/" exact render={StreamList}></Route>
-          <Route path="/stream/new" exact render={CreateStream}></Route>
+          <Route path="/stream/new" exact>
+            <CreateStream />
+          </Route>
           <Route path="/stream/edit" exact render={EditStream}></Route>
           <Route path="/stream/delete" exact render={StreamDelete}></Route>
           <Route path="/stream/live" exact render={LiveStream}></Route>

@@ -1,28 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.scss";
+import "./Header.css";
 import CubeLogo from "../../Assets/Logo/CubeLogo.svg";
 import Auth from "../Auth/Auth";
 
 function Header() {
   return (
-    <div className="ui inverted segment header">
-      <div className="ui inverted secondary menu">
-        <div className="item header-logo-box">
-          <Link to="/">
-            <img src={CubeLogo} alt="logo" className="header-logo" />
-          </Link>
-        </div>
-        <Link className="item" to="/">
-          Stream
+    <div className="navbar bg-base-300">
+      <div className="flex-1">
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <img src={CubeLogo} alt="logo" className="header-logo" />
         </Link>
-        <Link className="item" to="/">
-          Watch
-        </Link>
-
-        <div className="right item header-btn">
-          <Auth></Auth>
-        </div>
+      </div>
+      <div className="flex-none">
+        <ul className="menu menu-horizontal p-0">
+          <li>
+            <Link className="item" to="/">
+              Stream
+            </Link>
+          </li>
+          <li>
+            <Link className="item" to="/">
+              Watch
+            </Link>
+          </li>
+          <li>
+            <Auth />
+          </li>
+        </ul>
       </div>
     </div>
   );

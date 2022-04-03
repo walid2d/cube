@@ -20,6 +20,7 @@ class Auth extends React.Component {
     if (this.props.isLoggedIn) {
       return (
         <GoogleLogout
+          theme="dark"
           clientId={`1021073274418-81ienqfhbevgg6qf55krn9b177jnss3k.apps.googleusercontent.com`}
           buttonText={this.btnText()}
           onLogoutSuccess={() => this.props.logOut()}
@@ -28,7 +29,7 @@ class Auth extends React.Component {
     } else {
       return (
         <GoogleLogin
-          theme="light"
+          theme="dark"
           clientId={`1021073274418-81ienqfhbevgg6qf55krn9b177jnss3k.apps.googleusercontent.com`}
           buttonText={this.btnText()}
           onSuccess={this.handlelogin}

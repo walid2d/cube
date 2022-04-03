@@ -16,7 +16,13 @@ export default (state = intialState, action) => {
         userPfp: action.payload.imageUrl,
       };
     case "LOG_OUT":
-      return { ...state, isLoggedIn: false };
+      return {
+        ...state,
+        isLoggedIn: false,
+        userId: null,
+        userName: null,
+        userPfp: null,
+      };
 
     default:
       return state;
