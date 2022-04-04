@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { addStream } from "../../API/streams";
+import { addStream } from "../../Actions/Index";
 
 class CreateStream extends React.Component {
   //injects the form into the redux field component
@@ -32,7 +32,7 @@ class CreateStream extends React.Component {
     );
   };
   onSubmit = (values) => {
-    console.log(values);
+    this.props.addStream(values);
   };
   render() {
     return (
@@ -75,7 +75,10 @@ const validate = (formValues) => {
   }
   return error;
 };
-export default reduxForm({
+
+const formWrap = reduxForm({
   form: "CreateStream",
   validate: validate,
 })(CreateStream);
+
+export default connect(null, { addStream })(formWrap);
