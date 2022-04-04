@@ -12,7 +12,9 @@ const App = function () {
       <BrowserRouter>
         <div>
           <Header />
-          <Route path="/" exact render={StreamList}></Route>
+          <Route path="/" exact>
+            <StreamList />
+          </Route>
           <Route path="/stream/new" exact>
             <CreateStream />
           </Route>
