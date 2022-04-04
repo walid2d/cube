@@ -1,6 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { addStream } from "../../API/streams";
+
 class CreateStream extends React.Component {
+  //injects the form into the redux field component
+  // Shows the error component
   renderInput = ({ input, label, type, meta }) => {
     const errorEle =
       meta.touched && meta.error ? (
@@ -58,6 +63,8 @@ class CreateStream extends React.Component {
     );
   }
 }
+
+//checks if the form is empty or not
 const validate = (formValues) => {
   const error = {};
   if (!formValues.title) {

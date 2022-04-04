@@ -4,7 +4,7 @@ const intialState = {
   userId: null,
   userPfp: null,
 };
-
+// this reducer, depending on the action checks for if the current user is logged and changes the state
 export default (state = intialState, action) => {
   switch (action.type) {
     case "LOG_IN":
