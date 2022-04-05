@@ -5,27 +5,24 @@ import EditStream from "./Components/EditStream/EditStream";
 import LiveStream from "./Components/LiveStream/LiveStream";
 import StreamDelete from "./Components/StreamDelete/StreamDelete";
 import StreamList from "./Components/StreamList/StreamList";
+import About from "./Components/About/About";
 import routerHistory from "./Util/routerHistory";
+import { Switch } from "react-router-dom";
 
 const App = function () {
   const history = routerHistory;
   return (
     <>
       <Router history={history}>
-        <div>
-          <Header />
-          <Route path="/" exact>
-            <StreamList />
-          </Route>
-          <Route path="/stream/new" exact>
-            <CreateStream />
-          </Route>
+        <Header />
+        <Switch>
+          <Route path="/" component={StreamList} exact />
+          <Route path="/stream/new" exact component={CreateStream} />
           <Route path="/stream/edit/:id" exact component={EditStream} />
           <Route path="/stream/delete/:id" exact component={StreamDelete} />
-          <Route path="/stream/live/:id" exact>
-            <LiveStream />
-          </Route>
-        </div>
+          <Route path="/stream/live/:id" exact component={LiveStream} />
+          <Route path="/about" exact component={About} />
+        </Switch>
       </Router>
     </>
   );

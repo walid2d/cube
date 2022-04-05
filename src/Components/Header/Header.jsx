@@ -38,7 +38,7 @@ class Header extends React.Component {
             </li>
             {this.renderCreateStream()}
             <li>
-              <Link className="item" to="/">
+              <Link className="item" to="/about">
                 About
               </Link>
             </li>
