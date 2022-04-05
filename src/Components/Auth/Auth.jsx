@@ -22,14 +22,12 @@ class Auth extends React.Component {
   btnHandler = () => {
     if (this.props.isLoggedIn) {
       return (
-        <Link to="/">
-          <GoogleLogout
-            theme="dark"
-            clientId={`1021073274418-81ienqfhbevgg6qf55krn9b177jnss3k.apps.googleusercontent.com`}
-            buttonText={this.btnText()}
-            onLogoutSuccess={() => this.handlelogout()}
-          ></GoogleLogout>
-        </Link>
+        <GoogleLogout
+          theme="dark"
+          clientId={`1021073274418-81ienqfhbevgg6qf55krn9b177jnss3k.apps.googleusercontent.com`}
+          buttonText={this.btnText()}
+          onLogoutSuccess={() => this.handlelogout()}
+        ></GoogleLogout>
       );
     } else {
       return (

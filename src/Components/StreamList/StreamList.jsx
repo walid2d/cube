@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { getStreams } from "../../Actions/Index";
 class StreamList extends React.Component {
   componentDidMount() {
@@ -12,14 +13,18 @@ class StreamList extends React.Component {
       this.props.currentUser.isLoggedIn
     ) {
       return (
-        <>
+        <Fragment key={stream.id}>
           <div className="card-actions justify-center">
-            <button className="btn btn-primary">Edit</button>
+            <Link to={`stream/edit/${stream.id}`} className="btn btn-primary">
+              Edit
+            </Link>
           </div>
           <div className="card-actions justify-center">
-            <button className="btn btn-primary">Delete</button>
+            <Link to={`stream/delete/${stream.id}`} className="btn btn-primary">
+              Delete
+            </Link>
           </div>
-        </>
+        </Fragment>
       );
     }
   }
@@ -42,7 +47,9 @@ class StreamList extends React.Component {
             <h2 className="card-title">{stream.title}</h2>
             <p>{stream.description}</p>
             <div className="card-actions justify-center">
-              <button className="btn btn-primary">Watch Now</button>
+              <Link to={`stream/live/${stream.id}`} className="btn btn-primary">
+                Watch Now
+              </Link>
             </div>
             {this.renderUser(stream)}
           </div>

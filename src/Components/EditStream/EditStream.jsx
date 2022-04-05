@@ -1,6 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 
-function EditStream() {
-  return <h1>component2</h1>;
+class EditStream extends React.Component {
+  render() {
+    return <h1>component2</h1>;
+  }
 }
-export default EditStream;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.auth,
+  };
+};
+export default connect(mapStateToProps)(EditStream);

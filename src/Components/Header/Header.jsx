@@ -36,12 +36,12 @@ class Header extends React.Component {
                 Streams
               </Link>
             </li>
+            {this.renderCreateStream()}
             <li>
               <Link className="item" to="/">
-                Watch
+                About
               </Link>
             </li>
-            {this.renderCreateStream()}
             <li>
               <Auth />
             </li>

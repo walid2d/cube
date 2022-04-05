@@ -1,15 +1,17 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import CreateStream from "./Components/CreateStream/CreateStream";
 import EditStream from "./Components/EditStream/EditStream";
 import LiveStream from "./Components/LiveStream/LiveStream";
 import StreamDelete from "./Components/StreamDelete/StreamDelete";
 import StreamList from "./Components/StreamList/StreamList";
+import routerHistory from "./Util/routerHistory";
 
 const App = function () {
+  const history = routerHistory;
   return (
     <>
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Header />
           <Route path="/" exact>
@@ -18,11 +20,17 @@ const App = function () {
           <Route path="/stream/new" exact>
             <CreateStream />
           </Route>
-          <Route path="/stream/edit" exact render={EditStream}></Route>
-          <Route path="/stream/delete" exact render={StreamDelete}></Route>
-          <Route path="/stream/live" exact render={LiveStream}></Route>
+          <Route path="/stream/edit/:id" exact>
+            <EditStream />
+          </Route>
+          <Route path="/stream/delete/:id" exact>
+            <StreamDelete />
+          </Route>
+          <Route path="/stream/live/:id" exact>
+            <LiveStream />
+          </Route>
         </div>
-      </BrowserRouter>
+      </Router>
     </>
   );
 };

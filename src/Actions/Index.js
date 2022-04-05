@@ -1,6 +1,5 @@
-import { useHistory } from "react-router-dom";
 import streams from "../API/streams";
-
+import routerHistory from "../Util/routerHistory";
 // action creator for login and log out
 export const logIn = (user) => {
   return {
@@ -18,12 +17,13 @@ export const logOut = () => {
 // instance of axios that handles all the api requests
 export const addStream = (formValues) => async (dispatch, getState) => {
   const loginInfo = getState().auth;
-  console.log(loginInfo);
+  const history = routerHistory;
   const response = await streams.post("/stream/new", {
     ...formValues,
     ...loginInfo,
   });
   dispatch({ type: "CREATE_STREAM", payload: response.data });
+  history.push("/");
 };
 export const getStreams = () => async (dispatch) => {
   const response = await streams.get("/stream/all");
