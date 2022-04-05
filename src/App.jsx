@@ -21,9 +21,7 @@ const App = function () {
             <CreateStream />
           </Route>
           <Route path="/stream/edit/:id" exact component={EditStream} />
-          <Route path="/stream/delete/:id" exact>
-            <StreamDelete />
-          </Route>
+          <Route path="/stream/delete/:id" exact component={StreamDelete} />
           <Route path="/stream/live/:id" exact>
             <LiveStream />
           </Route>

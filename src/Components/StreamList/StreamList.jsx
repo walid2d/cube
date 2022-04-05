@@ -22,7 +22,10 @@ class StreamList extends React.Component {
             </Link>
           </div>
           <div className="card-actions justify-center">
-            <Link to={`stream/delete/${stream.id}`} className="btn btn-primary">
+            <Link
+              to={`stream/delete/${stream.id}`}
+              className="btn btn-secondary"
+            >
               Delete
             </Link>
           </div>
