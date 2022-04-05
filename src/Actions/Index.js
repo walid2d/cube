@@ -15,9 +15,9 @@ export const logOut = () => {
 };
 
 // instance of axios that handles all the api requests
+const history = routerHistory;
 export const addStream = (formValues) => async (dispatch, getState) => {
   const loginInfo = getState().auth;
-  const history = routerHistory;
   const response = await streams.post("/stream/new", {
     ...formValues,
     ...loginInfo,
@@ -34,8 +34,10 @@ export const getOneStream = (id) => async (dispatch) => {
   dispatch({ type: "GET_ONE_STREAM", payload: response.data });
 };
 export const editStream = (id, formValues) => async (dispatch) => {
-  const response = await streams.put(`stream/edit/${id}`, formValues);
+  const response = await streams.patch(`stream/edit/${id}`, formValues);
   dispatch({ type: "EDIT_STREAM", payload: response.data });
+  console.log(response);
+  history.push("/");
 };
 export const deleteStream = (id) => async (dispatch) => {
   await streams.delete(`/stream/delete/${id}`);

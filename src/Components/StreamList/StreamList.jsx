@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getStreams } from "../../Actions/Index";
+import uuid from "react-uuid";
+
 class StreamList extends React.Component {
   componentDidMount() {
     this.props.getStreams();
@@ -13,7 +15,7 @@ class StreamList extends React.Component {
       this.props.currentUser.isLoggedIn
     ) {
       return (
-        <Fragment key={stream.id}>
+        <Fragment key={uuid()}>
           <div className="card-actions justify-center">
             <Link to={`stream/edit/${stream.id}`} className="btn btn-primary">
               Edit
@@ -31,29 +33,34 @@ class StreamList extends React.Component {
 
   renderStreams = () => {
     return this.props.streams.map((stream) => {
-      return (
-        <div
-          className="card w-64 h-80 bg-base-100 shadow-xl image-full "
-          key={stream.id}
-        >
-          <figure>
-            <img
-              src="https://api.lorem.space/image/shoes?w=400&h=225"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">{stream.title}</h2>
-            <p>{stream.description}</p>
-            <div className="card-actions justify-center">
-              <Link to={`stream/live/${stream.id}`} className="btn btn-primary">
-                Watch Now
-              </Link>
+      if (stream.id) {
+        return (
+          <div
+            className="card w-64 h-80 bg-base-100 shadow-xl image-full "
+            key={uuid()}
+          >
+            <figure>
+              <img
+                src="https://api.lorem.space/image/shoes?w=400&h=225"
+                alt="Shoes"
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{stream.title}</h2>
+              <p>{stream.description}</p>
+              <div className="card-actions justify-center">
+                <Link
+                  to={`stream/live/${stream.id}`}
+                  className="btn btn-primary"
+                >
+                  Watch Now
+                </Link>
+              </div>
+              {this.renderUser(stream)}
             </div>
-            {this.renderUser(stream)}
           </div>
-        </div>
-      );
+        );
+      }
     });
   };
   render() {
@@ -61,6 +68,10 @@ class StreamList extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
+  const obj = {
+    test: Object.values(state.streams),
+  };
+  console.log(obj.test);
   return {
     streams: Object.values(state.streams),
     currentUser: state.auth,

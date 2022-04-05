@@ -1,17 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getOneStream } from "../../Actions/Index";
+import { getOneStream, editStream } from "../../Actions/Index";
+import StreamForm from "../StreamForm/StreamForm";
 
 class EditStream extends React.Component {
   componentDidMount() {
     this.props.getOneStream(this.props.match.params.id);
   }
+  onSubmit = (values) => {
+    this.props.editStream(this.props.match.params.id, values);
+  };
   render() {
-    console.log(this.props);
     if (this.props.stream) {
-      return <div>{this.props.stream.title}</div>;
+      const { title, description } = this.props.stream;
+      return (
+        <div>
+          <h1>Edit form</h1>
+          <StreamForm
+            initialValues={{ title, description }}
+            onSubmit={this.onSubmit}
+          />
+        </div>
+      );
     } else {
-      return <h1>component2</h1>;
+      return <h1>Loading...</h1>;
     }
   }
 }
@@ -20,4 +32,6 @@ const mapStateToProps = (state, ownProps) => {
     stream: state.streams[ownProps.match.params.id],
   };
 };
-export default connect(mapStateToProps, { getOneStream })(EditStream);
+export default connect(mapStateToProps, { getOneStream, editStream })(
+  EditStream
+);
