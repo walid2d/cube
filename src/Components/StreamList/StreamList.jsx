@@ -30,7 +30,6 @@ class StreamList extends React.Component {
   }
 
   renderStreams = () => {
-    console.log(this.props);
     return this.props.streams.map((stream) => {
       return (
         <div
@@ -58,7 +57,6 @@ class StreamList extends React.Component {
     });
   };
   render() {
-    console.log(this.props.streams);
     return <>{this.renderStreams()}</>;
   }
 }
