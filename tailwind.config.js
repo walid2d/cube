@@ -4,26 +4,26 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: "#5F17EB",
+          primary: "#F87272",
 
-          secondary: "#ef5f69",
+          secondary: "#75D1F0",
 
-          accent: "#1bc61b",
+          accent: "#AA70F8",
 
-          neutral: "#1C2022",
+          neutral: "#423F00",
 
-          "base-100": "#263140",
+          "base-100": "#FFEE00",
 
-          info: "#5084DC",
+          info: "#3ABFF8",
 
-          success: "#16AC6D",
+          success: "#36D399",
 
-          warning: "#BD8D14",
+          warning: "#FBBD23",
 
-          error: "rgb(255,73,124)",
+          error: "#FF7598",
         },
       },
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };

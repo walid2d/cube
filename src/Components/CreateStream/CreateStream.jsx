@@ -9,10 +9,11 @@ class CreateStream extends React.Component {
   };
   render() {
     return (
-      <>
-        <h1>Create a Stream</h1>
-        <StreamForm onSubmit={this.onSubmit} />
-      </>
+      <div className="hero min-h-screen bg-base-200">
+        <StreamForm onSubmit={this.onSubmit} btnTxt="Create">
+          <h1 className="font-black">Create a New Stream</h1>
+        </StreamForm>
+      </div>
     );
   }
 }

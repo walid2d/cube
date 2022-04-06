@@ -8,6 +8,7 @@ import StreamList from "./Components/StreamList/StreamList";
 import About from "./Components/About/About";
 import routerHistory from "./Util/routerHistory";
 import { Switch } from "react-router-dom";
+import Footer from "./Components/Footer/Footer";
 
 const App = function () {
   const history = routerHistory;
@@ -23,6 +24,7 @@ const App = function () {
           <Route path="/stream/live/:id" exact component={LiveStream} />
           <Route path="/about" exact component={About} />
         </Switch>
+        <Footer />
       </Router>
     </>
   );

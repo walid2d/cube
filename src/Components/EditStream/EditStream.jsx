@@ -14,13 +14,17 @@ class EditStream extends React.Component {
     if (this.props.stream) {
       const { title, description } = this.props.stream;
       return (
-        <div>
-          <h1>Edit form</h1>
-          <StreamForm
-            initialValues={{ title, description }}
-            onSubmit={this.onSubmit}
-          />
-        </div>
+        <>
+          <div className="hero min-h-screen bg-base-200">
+            <StreamForm
+              initialValues={{ title, description }}
+              onSubmit={this.onSubmit}
+              btnTxt="Submit"
+            >
+              <h1 className="font-black">Edit This Stream</h1>
+            </StreamForm>
+          </div>
+        </>
       );
     } else {
       return <h1>Loading...</h1>;

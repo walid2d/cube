@@ -21,7 +21,7 @@ class StreamForm extends React.Component {
             value={input.value}
             placeholder={type}
             className={`input ${
-              errorEle ? "input-error" : "input-primary"
+              errorEle ? "input-error" : "input-secondary"
             } input-bordered`}
           />
         </div>
@@ -34,29 +34,28 @@ class StreamForm extends React.Component {
   };
   render() {
     return (
-      <div className="hero min-h-screen bg-base-200">
-        <div className="card w-96 bg-base-100 shadow-xl">
-          <form
-            className="card-body"
-            onSubmit={this.props.handleSubmit(this.onSubmit)}
-          >
-            <Field
-              name="title"
-              label="Title"
-              type="Type your title here"
-              component={this.renderInput}
-            />
-            <Field
-              name="description"
-              label="Description"
-              type="Give your video a description"
-              component={this.renderInput}
-            />
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Create</button>
-            </div>
-          </form>
-        </div>
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <form
+          className="card-body"
+          onSubmit={this.props.handleSubmit(this.onSubmit)}
+        >
+          {this.props.children}
+          <Field
+            name="title"
+            label="Title"
+            type="Type your title here"
+            component={this.renderInput}
+          />
+          <Field
+            name="description"
+            label="Description"
+            type="Give your video a description"
+            component={this.renderInput}
+          />
+          <div className="form-control mt-6">
+            <button className="btn btn-primary">{this.props.btnTxt}</button>
+          </div>
+        </form>
       </div>
     );
   }
