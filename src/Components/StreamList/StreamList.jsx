@@ -30,7 +30,10 @@ class StreamList extends React.Component {
             <Link to={`stream/live/${stream.id}`} className="btn btn-primary">
               Go Live
             </Link>
-            <Link to={`stream/edit/${stream.id}`} className="btn btn-accent">
+            <Link
+              to={`stream/edit/${stream.id}`}
+              className="btn btn-neutral pl-6 pr-6"
+            >
               Edit
             </Link>
           </div>
@@ -43,7 +46,10 @@ class StreamList extends React.Component {
       );
     } else {
       return (
-        <Link to={`stream/live/${stream.id}`} className="btn btn-primary">
+        <Link
+          to={`stream/live/${stream.id}`}
+          className="btn btn-primary btn-lg"
+        >
           Watch
         </Link>
       );
@@ -61,13 +67,13 @@ class StreamList extends React.Component {
               <div className="w-24 rounded-xl">
                 <img src={stream.userpfp} />
               </div>
-              <h2 className="text-base pt-2 font-black">
+              <h2 className="text-base pt-2 font-black font-semibold">
                 By {stream.username}
               </h2>
             </div>
             <div className="card-body">
               <h2 className="card-title">{stream.title}</h2>
-              <p>{stream.description}</p>
+              <p className="text-md font-light">{stream.description}</p>
               <div className="card-actions justify-end">
                 {this.renderUser(stream)}
               </div>
@@ -88,7 +94,7 @@ class StreamList extends React.Component {
           >
             <div className="card-body">
               <h2 className="card-title">{stream.title}</h2>
-              <p>{stream.description}</p>
+              <p className="text-md font-light">{stream.description}</p>
               <div className="card-actions justify-center">
                 {this.renderUser(stream)}
               </div>
@@ -108,11 +114,13 @@ class StreamList extends React.Component {
           />
           <div className="hero-content flex-row gap-5 ml-auto mr-auto">
             <div className="hero-content flex-col justify-self-start mb-auto ">
-              <h1 class=" text-5xl font-bold mr-auto mt-4 ">Your Streams</h1>
+              <h1 className=" text-5xl font-bold mr-auto mt-4 ">My Streams</h1>
               {this.renderStreams()}
             </div>
             <div className="hero-content flex-col justify-self-end mb-auto w-max mr-auto">
-              <h1 class=" text-5xl font-bold mr-auto mt-4 ">Popular Streams</h1>
+              <h1 className=" text-5xl font-bold mr-auto mt-4 ">
+                Popular Streams
+              </h1>
               {this.renderOtherStreams()}
             </div>
           </div>
@@ -123,9 +131,11 @@ class StreamList extends React.Component {
         <div className="hero min-h-screen bg-base-200 ">
           <div className="hero-content flex-col lg:flex-row-reverse gap-x-8">
             <div className="text-center lg:text-left">
-              <h1 className=" text-5xl font-bold w-96  leading-snug">
+              <h1 className=" text-5xl font-bold w-96 leading-snug ">
                 <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-accent relative inline-block">
-                  <span className="relative text-white">Login Now!</span>
+                  <span className="relative text-white mr-4 ml-4">
+                    Login Now!
+                  </span>
                 </span>
                 To join your friends in the Cube
               </h1>

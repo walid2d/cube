@@ -12,7 +12,7 @@ class Header extends React.Component {
     if (this.props.currentUser.isLoggedIn) {
       return (
         <li>
-          <Link className="btn btn-primary" to="/stream/new">
+          <Link className="btn btn-accent" to="/stream/new">
             Create
           </Link>
         </li>
@@ -25,7 +25,7 @@ class Header extends React.Component {
       return (
         <div className="dropdown  dropdown-end">
           <label tabIndex="0" className="btn btn-ghost btn-circle avatar mx-2">
-            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div className="w-24 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2">
               <img src={userPfp} alt="user profile picture" />
             </div>
           </label>
@@ -48,7 +48,7 @@ class Header extends React.Component {
   render() {
     const { isLoggedIn } = this.props.currentUser;
     return (
-      <div className="navbar bg-base-100 ">
+      <div className="navbar bg-neutral text-neutral-content ">
         <div className="flex-1">
           <Link
             to="/"

@@ -22,11 +22,11 @@ class StreamDelete extends React.Component {
               Are you sure you want to delete the Stream ?
             </h2>
 
-            <div className="card-actions justify-end">
+            <div className="card-actions mt-4 justify-end">
               <button className="btn btn-warning" onClick={this.onDelete}>
                 Delete
               </button>
-              <button onClick={this.onCancel} className="btn btn-ghost">
+              <button onClick={this.onCancel} className="btn btn-accent">
                 Cancel
               </button>
             </div>
