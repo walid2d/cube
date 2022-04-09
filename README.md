@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Capstone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cube is a live video streaming application made using React JS and Redux as frontend and NodeJS as backend, having functionality of basic CRUD (create-read-update-delete) operations.
 
-## Available Scripts
+# Functionality
 
-In the project directory, you can run:
+- create/edit/delete Streams
+- live Streams
 
-### `npm start`
+# Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Download OBS studio for you preferred OS : https://obsproject.com
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone the current client and API repositories :
 
-### `npm test`
+```
+git clone https://github.com/walid2d/cube
+git clone https://github.com/walid2d/rtmpserver-cube
+git clone https://github.com/walid2d/cube-server
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Install modules:
 
-### `npm run build`
+cd to each directory and run
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Server info:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Client runs on port 3000.
+The cube-server runs on port 8080.
+The rtmp-server (Real-Time Messaging Protocol) runs on port 1935
 
-### `npm run eject`
+# OBS Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Start OBS studio
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Create a Scene
+- Select the Sources that you want to Share
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Then go to : Settings > Streams > Service > Select: Custom
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then Copy and Paste this on Server :
 
-## Learn More
+```
+rtmp://localhost/live
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Start the app:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Fire up the cube server first :
 
-### Code Splitting
+```
+nodemon index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Then start the front end :
 
-### Analyzing the Bundle Size
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Then start the rtmp server :
 
-### Making a Progressive Web App
+```
+nodemon server.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Streaming
 
-### Advanced Configuration
+Step by Step
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Login
+- Create a new Video
+- Click Go Live
+- Click Copy Link
+- Go to OBS studio
+- Go to Settings > Streams > Service
+- Paste the Link on : Stream Key
+- Hit ok
+- And click Start Streaming
