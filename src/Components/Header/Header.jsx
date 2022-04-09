@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 import CubeLogo from "../../Assets/Logo/CubeLogo.svg";
-import { Link } from "react-router-dom";
+import Auth from "../Auth/Auth";
+
 function Header() {
   return (
     <div className="ui inverted segment header">
@@ -19,7 +21,7 @@ function Header() {
         </Link>
 
         <div className="right item header-btn">
-          <div className="ui purple button">Sign In</div>
+          <Auth></Auth>
         </div>
       </div>
     </div>
