@@ -1,6 +1,4 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import React, { Fragment } from "react";
-
 import Header from "./Components/Header/Header";
 import CreateStream from "./Components/CreateStream/CreateStream";
 import EditStream from "./Components/EditStream/EditStream";
@@ -14,8 +12,12 @@ const App = function () {
       <BrowserRouter>
         <div>
           <Header />
-          <Route path="/" exact render={StreamList}></Route>
-          <Route path="/stream/new" exact render={CreateStream}></Route>
+          <Route path="/" exact>
+            <StreamList />
+          </Route>
+          <Route path="/stream/new" exact>
+            <CreateStream />
+          </Route>
           <Route path="/stream/edit" exact render={EditStream}></Route>
           <Route path="/stream/delete" exact render={StreamDelete}></Route>
           <Route path="/stream/live" exact render={LiveStream}></Route>

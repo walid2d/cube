@@ -1,15 +1,18 @@
 import React from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { logIn, logOut } from "../../Actions/Index";
 
 class Auth extends React.Component {
   handleFailure = (result) => {
     console.log(result);
   };
-  handlelogin = (userData) => {
-    console.log(userData.profileObj);
+  handleLogin = (userData) => {
     this.props.logIn(userData.profileObj);
+  };
+  handlelogout = () => {
+    this.props.logOut();
   };
   btnText = () => {
     const text = this.props.isLoggedIn ? "Sign Out" : "Sign in with Google";
@@ -19,19 +22,22 @@ class Auth extends React.Component {
   btnHandler = () => {
     if (this.props.isLoggedIn) {
       return (
-        <GoogleLogout
-          clientId={`1021073274418-81ienqfhbevgg6qf55krn9b177jnss3k.apps.googleusercontent.com`}
-          buttonText={this.btnText()}
-          onLogoutSuccess={() => this.props.logOut()}
-        ></GoogleLogout>
+        <Link to="/">
+          <GoogleLogout
+            theme="dark"
+            clientId={`1021073274418-81ienqfhbevgg6qf55krn9b177jnss3k.apps.googleusercontent.com`}
+            buttonText={this.btnText()}
+            onLogoutSuccess={() => this.handlelogout()}
+          ></GoogleLogout>
+        </Link>
       );
     } else {
       return (
         <GoogleLogin
-          theme="light"
+          theme="dark"
           clientId={`1021073274418-81ienqfhbevgg6qf55krn9b177jnss3k.apps.googleusercontent.com`}
           buttonText={this.btnText()}
-          onSuccess={this.handlelogin}
+          onSuccess={this.handleLogin}
           onFailure={this.handleFailure}
           cookiePolicy={"single_host_origin"}
         ></GoogleLogin>
