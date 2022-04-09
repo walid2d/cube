@@ -1,11 +1,11 @@
 # Capstone
 
-Cube is a live video streaming application made using React JS and Redux as frontend and NodeJS as backend, having functionality of basic CRUD (create-read-update-delete) operations.
+Cube is a live video streaming web application made using React JS and Redux as frontend and NodeJS as backend, having functionality of basic CRUD (create-read-update-delete) operations.
 
 # Functionality
 
-- create/edit/delete Streams
-- live Streams
+- Create/Edit/Delete Streams
+- Live Streams
 
 # Setup
 
